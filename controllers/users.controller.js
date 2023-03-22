@@ -2,6 +2,12 @@ const { User } = require('../models/UserModel')
 const { createUserService, loginService } = require('../services/usersServices')
 const generateToken = require('../utills/token')
 
+/**
+ *
+ * @@ Desc {Post a new user}
+ * @@ Post {Post it at /api/v1/users}
+ * @@ Access {public}
+ */
 exports.createUserController = async (req, res) => {
   try {
     const existsUser = await User.findOne({ email: req.body.email })
@@ -19,6 +25,12 @@ exports.createUserController = async (req, res) => {
   }
 }
 
+/**
+ *
+ * @@ Desc {Login as user}
+ * @@ Post {Post it at /api/v1/users/login}
+ * @@ Access {public}
+ */
 exports.loginUserController = async (req, res) => {
   try {
     const { email, password } = req.body
