@@ -1,5 +1,9 @@
 const { User } = require('../models/UserModel')
-const { createUserService, loginService } = require('../services/usersServices')
+const {
+  createUserService,
+  loginService,
+  getUserService,
+} = require('../services/usersServices')
 const generateToken = require('../utills/token')
 
 /**
@@ -21,7 +25,7 @@ exports.createUserController = async (req, res) => {
       .status(201)
       .json({ status: 'success', message: 'User created successfully' })
   } catch (error) {
-    res.status(400).json({ status: 'fail', error: error.message })
+    res.status(400).json({ status: 'fail', message: error.message })
   }
 }
 
@@ -63,6 +67,17 @@ exports.loginUserController = async (req, res) => {
       },
     })
   } catch (error) {
-    res.status(400).json({ status: 'fail', error: error.message })
+    res.status(400).json({ status: 'fail', message: error.message })
+  }
+}
+
+exports.getUserController = async (req, res) => {
+  try {
+    const userId = req.user?._id
+    console.log(userId)
+    const result = await getUserService(userId)
+    res.status(200).json({ status: 'success', user: result })
+  } catch (error) {
+    res.status(400).json({ status: 'fail', message: error.message })
   }
 }

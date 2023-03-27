@@ -25,3 +25,24 @@ exports.getArticleByIdService = async (id) => {
   const result = await Article.findById(id)
   return result
 }
+
+exports.getFirstTwoArticleService = async () => {
+  const result = await Article.find({}).limit(2).sort({ createdAt: -1 })
+  return result
+}
+
+exports.getEightArticlesService = async () => {
+  const result = await Article.find({}).limit(8).sort({ createdAt: -1 }).skip(2)
+  return result
+}
+exports.getTWoArticlesBottomService = async () => {
+  const result = await Article.find({})
+    .limit(2)
+    .sort({ createdAt: -1 })
+    .skip(10)
+  return result
+}
+exports.getFeaturedArticlesService = async () => {
+  const result = await Article.find({}).limit(5).sort({ createdAt: -1 })
+  return result
+}

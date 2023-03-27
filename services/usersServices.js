@@ -8,3 +8,7 @@ exports.createUserService = async (user) => {
 exports.loginService = async (email) => {
   return await User.findOne({ email })
 }
+
+exports.getUserService = async (userId) => {
+  return await User.findById(userId).select('-password')
+}

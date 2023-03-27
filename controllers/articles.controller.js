@@ -4,6 +4,10 @@ const {
   deleteArticleByIdService,
   getAllArticlesService,
   getArticleByIdService,
+  getFirstTwoArticleService,
+  getEightArticlesService,
+  getTWoArticlesBottomService,
+  getFeaturedArticlesService,
 } = require('../services/articles.services')
 
 /**
@@ -89,6 +93,64 @@ exports.getArticleById = async (req, res) => {
   try {
     const { id } = req.params
     const result = await getArticleByIdService(id)
+    res.status(200).json({ status: 'success', data: result })
+  } catch (error) {
+    res.status(401).json({ status: 'fail', message: error.message })
+  }
+}
+
+/**
+ *
+ * @@ Desc {Get FIrst two article}
+ * @@ Get {Get it at /api/v1/articles/getfirsttwo}
+ * @@ Access {Public}
+ */
+exports.getFirstTwoArticle = async (req, res) => {
+  try {
+    const result = await getFirstTwoArticleService()
+    res.status(200).json({ status: 'success', data: result })
+  } catch (error) {
+    res.status(401).json({ status: 'fail', message: error.message })
+  }
+}
+
+/**
+ *
+ * @@ Desc {Get FIrst two article}
+ * @@ Get {Get it at /api/v1/articles/getfirsttwo}
+ * @@ Access {Public}
+ */
+exports.getEightArticles = async (req, res) => {
+  try {
+    const result = await getEightArticlesService()
+    res.status(200).json({ status: 'success', data: result })
+  } catch (error) {
+    res.status(401).json({ status: 'fail', message: error.message })
+  }
+}
+/**
+ *
+ * @@ Desc {Get FIrst two article}
+ * @@ Get {Get it at /api/v1/articles/getfirsttwo}
+ * @@ Access {Public}
+ */
+exports.getTWoArticlesBottom = async (req, res) => {
+  try {
+    const result = await getTWoArticlesBottomService()
+    res.status(200).json({ status: 'success', data: result })
+  } catch (error) {
+    res.status(401).json({ status: 'fail', message: error.message })
+  }
+}
+/**
+ *
+ * @@ Desc {Get Featured articles for slider}
+ * @@ Get {Get it at /api/v1/articles/featured-article}
+ * @@ Access {Public}
+ */
+exports.getFeaturedArticles = async (req, res) => {
+  try {
+    const result = await getFeaturedArticlesService()
     res.status(200).json({ status: 'success', data: result })
   } catch (error) {
     res.status(401).json({ status: 'fail', message: error.message })

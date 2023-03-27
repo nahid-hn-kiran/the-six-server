@@ -21,7 +21,7 @@ const commentSchma = mongoose.Schema(
     },
   },
   {
-    timeStamps: true,
+    timestamps: true,
   }
 )
 
@@ -50,7 +50,7 @@ const articleSchema = mongoose.Schema(
     comments: [commentSchma],
   },
   {
-    timeStamps: true,
+    timestamps: true,
   }
 )
 
