@@ -8,4 +8,6 @@ router.route('/').post(userController.createUserController)
 router.route('/login').post(userController.loginUserController)
 router.route('/profile').get(protectedContent, userController.getUserController)
 
+router.route('/user').get(userController.getUserByIdController)
+
 module.exports = router

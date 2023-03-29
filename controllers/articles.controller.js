@@ -8,6 +8,7 @@ const {
   getEightArticlesService,
   getTWoArticlesBottomService,
   getFeaturedArticlesService,
+  postCommentService,
 } = require('../services/articles.services')
 
 /**
@@ -151,6 +152,26 @@ exports.getTWoArticlesBottom = async (req, res) => {
 exports.getFeaturedArticles = async (req, res) => {
   try {
     const result = await getFeaturedArticlesService()
+    res.status(200).json({ status: 'success', data: result })
+  } catch (error) {
+    res.status(401).json({ status: 'fail', message: error.message })
+  }
+}
+/**
+ *
+ * @@ Desc {POST Comment for a article}
+ * @@ Get {POST it at /api/v1/articles/:id/commentt}
+ * @@ Access {Logged in user}
+ */
+exports.postComment = async (req, res) => {
+  try {
+    const { id } = req.params
+    const comment = req.body
+    const theComment = {
+      comment: comment.comment,
+      author: req.user._id,
+    }
+    const result = await postCommentService(id, theComment)
     res.status(200).json({ status: 'success', data: result })
   } catch (error) {
     res.status(401).json({ status: 'fail', message: error.message })

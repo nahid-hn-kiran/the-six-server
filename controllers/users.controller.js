@@ -71,10 +71,30 @@ exports.loginUserController = async (req, res) => {
   }
 }
 
+/**
+ *
+ * @@ Desc {Get logged in user by id}
+ * @@ Get {Post it at /api/v1/users/profile}
+ * @@ Access {public}
+ */
 exports.getUserController = async (req, res) => {
   try {
     const userId = req.user?._id
-    console.log(userId)
+    const result = await getUserService(userId)
+    res.status(200).json({ status: 'success', user: result })
+  } catch (error) {
+    res.status(400).json({ status: 'fail', message: error.message })
+  }
+}
+/**
+ *
+ * @@ Desc {Get a user by id}
+ * @@ Get {Post it at /api/v1/users/user}
+ * @@ Access {public}
+ */
+exports.getUserByIdController = async (req, res) => {
+  try {
+    const userId = req.headers.userid
     const result = await getUserService(userId)
     res.status(200).json({ status: 'success', user: result })
   } catch (error) {

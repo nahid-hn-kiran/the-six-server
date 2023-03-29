@@ -9,6 +9,7 @@ const {
   getEightArticles,
   getTWoArticlesBottom,
   getFeaturedArticles,
+  postComment,
 } = require('../controllers/articles.controller')
 const { protectedContent } = require('../middlewares/verifyToken')
 const router = express.Router()
@@ -19,6 +20,7 @@ router.route('/get-eight-articles').get(getEightArticles)
 router.route('/get-two-articles-bottom').get(getTWoArticlesBottom)
 router.route('/featured-article').get(getFeaturedArticles)
 
+router.route('/:id/comment').post(protectedContent, postComment)
 router
   .route('/:id')
   .get(getArticleById)

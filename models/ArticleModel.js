@@ -1,15 +1,8 @@
 const mongoose = require('mongoose')
+const validator = require('validator')
 
 const commentSchma = mongoose.Schema(
   {
-    name: {
-      type: String,
-      required: true,
-    },
-    email: {
-      type: String,
-      required: true,
-    },
     comment: {
       type: String,
       required: [true, 'Please write your comment'],
@@ -48,10 +41,15 @@ const articleSchema = mongoose.Schema(
       required: [true, 'thumbnail is required'],
     },
     comments: [commentSchma],
+    views: {
+      type: Number,
+      required: true,
+      default: 0,
+    },
   },
   {
     timestamps: true,
   }
 )
 
-exports.Article = mongoose.model('article', articleSchema)
+exports.Article = mongoose.model('Article', articleSchema)

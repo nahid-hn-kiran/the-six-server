@@ -82,4 +82,4 @@ userSchema.methods.comparePassword = function (password, hash) {
   return isPasswordValid
 }
 
-exports.User = mongoose.model('user', userSchema)
+exports.User = mongoose.model('User', userSchema)
