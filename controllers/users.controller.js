@@ -3,6 +3,8 @@ const {
   createUserService,
   loginService,
   getUserService,
+  getAllUsersService,
+  getAllAdminsService,
 } = require('../services/usersServices')
 const generateToken = require('../utills/token')
 
@@ -71,6 +73,34 @@ exports.loginUserController = async (req, res) => {
   }
 }
 
+/**
+ *
+ * @@ Desc {Get all users}
+ * @@ Get {Get it at /api/v1/users}
+ * @@ Access {Admin}
+ */
+exports.getAllUsersController = async (req, res) => {
+  try {
+    const result = await getAllUsersService()
+    res.status(200).json({ status: 'success', users: result })
+  } catch (error) {
+    res.status(400).json({ status: 'fail', message: error.message })
+  }
+}
+/**
+ *
+ * @@ Desc {Get all Admins}
+ * @@ Get {Get it at /api/v1/users/admin}
+ * @@ Access {Admin}
+ */
+exports.getAllAdminsController = async (req, res) => {
+  try {
+    const result = await getAllAdminsService()
+    res.status(200).json({ status: 'success', admins: result })
+  } catch (error) {
+    res.status(400).json({ status: 'fail', message: error.message })
+  }
+}
 /**
  *
  * @@ Desc {Get logged in user by id}

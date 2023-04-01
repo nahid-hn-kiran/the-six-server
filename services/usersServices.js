@@ -9,6 +9,14 @@ exports.loginService = async (email) => {
   return await User.findOne({ email })
 }
 
+exports.getAllUsersService = async () => {
+  return await User.find({}).select('-password')
+}
+
+exports.getAllAdminsService = async () => {
+  return await User.find({ role: 'admin' }).select('-password')
+}
+
 exports.getUserService = async (userId) => {
   return await User.findById(userId).select('-password')
 }

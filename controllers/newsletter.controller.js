@@ -1,3 +1,4 @@
+const { NewsLetter } = require('../models/NewsLetterModel')
 const {
   subscribeNewsletterService,
   getSubscribersService,
@@ -6,6 +7,12 @@ const {
 
 exports.subscribeNewsletterController = async (req, res) => {
   try {
+    const existsUser = await NewsLetter.findOne({ email: req.body.email })
+    if (existsUser) {
+      return res
+        .status(400)
+        .json({ status: 'fail', message: 'Your are already subscribed' })
+    }
     const result = await subscribeNewsletterService(req.body)
     res
       .status(200)
