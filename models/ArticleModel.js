@@ -31,14 +31,29 @@ const articleSchema = mongoose.Schema(
       minLength: [5, 'Title must be at least 5 charecters.'],
       trim: true,
     },
+    category: {
+      type: String,
+      required: [true, 'category is required'],
+    },
     article: {
       type: String,
       required: [true, 'Please provide your article'],
       minLength: [50, 'article must be at least 50 charecters.'],
     },
+    tags: [String],
     thumbnail: {
       type: String,
-      required: [true, 'thumbnail is required'],
+      default:
+        'http://1.gravatar.com/avatar/1ec59eae354306975b17d78e8473d78b?s=90&d=mm&r=g',
+      validate: {
+        validator: function (value) {
+          return validator.isURL(value)
+        },
+        message: 'Image not found',
+      },
+    },
+    thumbnailTitle: {
+      type: String,
     },
     comments: [commentSchma],
     views: {

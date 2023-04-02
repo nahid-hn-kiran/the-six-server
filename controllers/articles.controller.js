@@ -20,11 +20,13 @@ const {
 exports.postArticle = async (req, res) => {
   try {
     const { _id } = req.user
-    const { title, article, thumbnail, comments } = req.body
+    const { title, article, category, tags, thumbnail, comments } = req.body
     const theArticle = {
       author: _id,
       title,
       article,
+      category,
+      tags,
       thumbnail,
       comments,
     }

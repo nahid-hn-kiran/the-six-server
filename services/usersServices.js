@@ -10,7 +10,7 @@ exports.loginService = async (email) => {
 }
 
 exports.getAllUsersService = async () => {
-  return await User.find({}).select('-password')
+  return await User.find({ role: { $ne: 'admin' } }).select('-password')
 }
 
 exports.getAllAdminsService = async () => {
