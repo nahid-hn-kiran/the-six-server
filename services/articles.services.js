@@ -18,14 +18,15 @@ exports.deleteArticleByIdService = async (id) => {
 
 exports.getAllArticlesService = async () => {
   const result = await Article.find({})
+    .sort({ createdAt: -1 })
+    .populate('author', 'name imgURL')
   return result
 }
 
 exports.getArticleByIdService = async (id) => {
-  const result = await Article.findById(id).populate(
-    'comments.author',
-    '_id name imgURL role status'
-  )
+  const result = await Article.findById(id)
+    .populate('author', 'name imgURL')
+    .populate('comments.author', '_id name imgURL role status')
   return result
 }
 
