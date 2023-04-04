@@ -43,14 +43,6 @@ const articleSchema = mongoose.Schema(
     tags: [String],
     thumbnail: {
       type: String,
-      default:
-        'http://1.gravatar.com/avatar/1ec59eae354306975b17d78e8473d78b?s=90&d=mm&r=g',
-      validate: {
-        validator: function (value) {
-          return validator.isURL(value)
-        },
-        message: 'Image not found',
-      },
     },
     thumbnailTitle: {
       type: String,

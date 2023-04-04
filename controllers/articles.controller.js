@@ -20,15 +20,15 @@ const {
 exports.postArticle = async (req, res) => {
   try {
     const { _id } = req.user
-    const { title, article, category, tags, thumbnail, comments } = req.body
+    const { title, article, category, tags, thumbnailTitle } = req.body
     const theArticle = {
       author: _id,
       title,
       article,
       category,
+      thumbnailTitle,
       tags,
-      thumbnail,
-      comments,
+      thumbnail: `http://localhost:5000/${req.file?.path}`,
     }
     const createdArticle = await postArticleService(theArticle)
     res
