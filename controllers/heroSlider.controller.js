@@ -11,14 +11,13 @@ const {
  */
 exports.postHeroSliderController = async (req, res) => {
   try {
-    const { title, content, thumbnail, postUrl } = req.body
-    const { name } = req.user
+    const { title, content, url } = req.body
+    console.log(req.file)
     const slider = {
-      author: name,
       title,
       content,
-      thumbnail,
-      postUrl,
+      thumbnail: `http://localhost:5000/${req.file?.path}`,
+      url,
     }
     const result = await postHeroSliderService(slider)
     res.status(200).json({ status: 'success', message: 'slider created' })

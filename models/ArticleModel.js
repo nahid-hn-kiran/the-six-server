@@ -43,6 +43,13 @@ const articleSchema = mongoose.Schema(
     tags: [String],
     thumbnail: {
       type: String,
+      required: [true, 'thumbnail is required'],
+      validate: {
+        validator: function (value) {
+          return validator.isURL(value)
+        },
+        message: 'Image not found',
+      },
     },
     thumbnailTitle: {
       type: String,

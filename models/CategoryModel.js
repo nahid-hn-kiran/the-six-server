@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const validator = require('validator')
 
 const categorySchema = mongoose.Schema(
   {
@@ -12,6 +13,15 @@ const categorySchema = mongoose.Schema(
       required: true,
       trim: true,
     },
+    // thumbnail: {
+    //   type: String,
+    //   validate: {
+    //     validator: function (value) {
+    //       return validator.isURL(value)
+    //     },
+    //     message: 'Image not found',
+    //   },
+    // },
   },
   {
     timestamps: true,
