@@ -11,7 +11,18 @@ const {
  */
 exports.postUpcomingMatchesController = async (req, res) => {
   try {
-    const result = await upcomingMatchesService(req.body)
+    const { team1, team2, venue, datetime } = req.body
+    const team1logo = req.files.team1logo[0].path
+    const team2logo = req.files.team2logo[0].path
+    const theMatch = {
+      team1,
+      team1logo,
+      team2,
+      team2logo,
+      venue,
+      datetime,
+    }
+    const result = await upcomingMatchesService(theMatch)
     res
       .status(200)
       .json({ status: 'success', data: 'Match created successfully' })

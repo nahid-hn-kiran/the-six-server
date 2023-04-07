@@ -28,7 +28,7 @@ exports.postArticle = async (req, res) => {
       category,
       thumbnailTitle,
       tags: tags.split(','),
-      thumbnail: `http://localhost:5000/${req.file?.path}`,
+      thumbnail: req.file?.path,
     }
     const createdArticle = await postArticleService(theArticle)
     res

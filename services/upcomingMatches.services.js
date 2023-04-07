@@ -5,6 +5,6 @@ exports.upcomingMatchesService = async (match) => {
   return result
 }
 exports.getUpcomingMatchesService = async () => {
-  const result = await UpcomingMatches.find({ date: { $gt: new Date() } })
+  const result = await UpcomingMatches.find({ datetime: { $gt: new Date() } })
   return result
 }

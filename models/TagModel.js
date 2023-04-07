@@ -12,15 +12,9 @@ const tagSchema = mongoose.Schema(
       required: true,
       trim: true,
     },
-    // thumbnail: {
-    //   type: String,
-    //   validate: {
-    //     validator: function (value) {
-    //       return validator.isURL(value)
-    //     },
-    //     message: 'Image not found',
-    //   },
-    // },
+    thumbnail: {
+      type: String,
+    },
   },
   {
     timestamps: true,

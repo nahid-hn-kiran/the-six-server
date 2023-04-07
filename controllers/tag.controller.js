@@ -26,7 +26,6 @@ exports.getTagsController = async (req, res) => {
 exports.addTagController = async (req, res) => {
   try {
     const existTag = await Tag.findOne({ name: req.body.name })
-    console.log(existTag)
     if (existTag) {
       return res
         .status(400)
