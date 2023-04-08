@@ -16,7 +16,7 @@ exports.postHeroSliderController = async (req, res) => {
     const slider = {
       title,
       content,
-      thumbnail: `http://localhost:5000/${req.file?.path}`,
+      thumbnail: `https://tame-pear-vulture-kilt.cyclic.app/${req.file?.path}`,
       url,
     }
     const result = await postHeroSliderService(slider)

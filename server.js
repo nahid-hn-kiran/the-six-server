@@ -10,8 +10,16 @@ const categoryRoute = require('./routes/category.route')
 const tagRoute = require('./routes/tag.route')
 
 // Middlewares
+app.use(
+  cors({
+    origin: '*',
+  })
+)
+
 app.use(express.json())
-app.use(cors())
+// app.use(notFound)
+// app.use(errorHandler)
+app.use('/uploads/images', express.static('uploads/images'))
 
 // Servers
 app.use('/api/v1/articles', articlesRoute)

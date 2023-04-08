@@ -12,11 +12,6 @@ dotenv.config({
 // Database connection
 connectDB()
 
-// Middlewares
-// app.use(notFound)
-// app.use(errorHandler)
-app.use('/uploads/images', express.static('uploads/images'))
-
 const port = process.env.PORT || 5000
 app.listen(port, () => {
   console.log(`Express is running from port: ${port}`)
