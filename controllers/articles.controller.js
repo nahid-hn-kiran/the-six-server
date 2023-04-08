@@ -28,7 +28,7 @@ exports.postArticle = async (req, res) => {
       article,
       category,
       thumbnailTitle,
-      tags: tags.split(','),
+      tags: tags,
       thumbnail,
     }
     const createdArticle = await postArticleService(theArticle)

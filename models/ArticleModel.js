@@ -40,7 +40,7 @@ const articleSchema = mongoose.Schema(
       required: [true, 'Please provide your article'],
       minLength: [50, 'article must be at least 50 charecters.'],
     },
-    tags: [String],
+    tags: String,
     thumbnail: {
       type: String,
       required: [true, 'thumbnail is required'],
