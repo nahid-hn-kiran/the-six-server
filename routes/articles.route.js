@@ -13,13 +13,9 @@ const {
   fileUpload,
 } = require('../controllers/articles.controller')
 const { protectedContent } = require('../middlewares/verifyToken')
-const imageUploader = require('../middlewares/uploader')
 const router = express.Router()
 
-router
-  .route('/')
-  .get(getAllArticles)
-  .post(imageUploader.single('thumbnail'), protectedContent, postArticle)
+router.route('/').get(getAllArticles).post(protectedContent, postArticle)
 router.route('/getfirsttwo').get(getFirstTwoArticle)
 router.route('/get-eight-articles').get(getEightArticles)
 router.route('/get-two-articles-bottom').get(getTWoArticlesBottom)

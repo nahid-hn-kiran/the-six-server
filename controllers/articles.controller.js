@@ -20,7 +20,8 @@ const {
 exports.postArticle = async (req, res) => {
   try {
     const { _id } = req.user
-    const { title, article, category, tags, thumbnailTitle } = req.body
+    const { title, article, category, tags, thumbnail, thumbnailTitle } =
+      req.body
     const theArticle = {
       author: _id,
       title,
@@ -28,7 +29,7 @@ exports.postArticle = async (req, res) => {
       category,
       thumbnailTitle,
       tags: tags.split(','),
-      thumbnail: req.file?.path,
+      thumbnail,
     }
     const createdArticle = await postArticleService(theArticle)
     res
