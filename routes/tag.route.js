@@ -1,15 +1,16 @@
 const express = require('express')
 const router = express.Router()
 const tagController = require('../controllers/tag.controller')
+const { protectedContent, adminCheck } = require('../middlewares/verifyToken')
 
 router
   .route('/')
   .get(tagController.getTagsController)
-  .post(tagController.addTagController)
+  .post(protectedContent, adminCheck, tagController.addTagController)
 
 router
   .route('/:id')
-  .put(tagController.updateTagController)
-  .delete(tagController.deleteTagController)
+  .put(protectedContent, adminCheck, tagController.updateTagController)
+  .delete(protectedContent, adminCheck, tagController.deleteTagController)
 
 module.exports = router
