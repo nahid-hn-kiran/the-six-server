@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const heroSliderController = require('../controllers/heroSlider.controller')
-const { protectedContent } = require('../middlewares/verifyToken')
+const { protectedContent, adminCheck } = require('../middlewares/verifyToken')
 
 // Services
 router
