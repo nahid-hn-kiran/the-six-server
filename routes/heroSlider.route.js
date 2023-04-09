@@ -6,11 +6,7 @@ const { protectedContent, adminCheck } = require('../middlewares/verifyToken')
 // Services
 router
   .route('/')
-  .post(
-    protectedContent,
-    adminCheck,
-    heroSliderController.postHeroSliderController
-  )
+  .post(protectedContent, heroSliderController.postHeroSliderController)
   .get(heroSliderController.getHeroSliderController)
 
 module.exports = router
