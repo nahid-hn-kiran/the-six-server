@@ -14,8 +14,13 @@ router.route('/profile').get(protectedContent, userController.getUserController)
 router
   .route('/admin')
   .get(protectedContent, adminCheck, userController.getAllAdminsController)
+
 router
   .route('/user')
   .get(protectedContent, adminCheck, userController.getUserByIdController)
+
+router
+  .route('/update-user')
+  .put(protectedContent, adminCheck, userController.updateUserRole)
 
 module.exports = router

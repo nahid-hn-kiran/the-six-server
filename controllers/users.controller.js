@@ -5,6 +5,7 @@ const {
   getUserService,
   getAllUsersService,
   getAllAdminsService,
+  updateUserRoleService,
 } = require('../services/usersServices')
 const generateToken = require('../utills/token')
 
@@ -126,6 +127,21 @@ exports.getUserByIdController = async (req, res) => {
   try {
     const userId = req.headers.userid
     const result = await getUserService(userId)
+    res.status(200).json({ status: 'success', user: result })
+  } catch (error) {
+    res.status(400).json({ status: 'fail', message: error.message })
+  }
+}
+/**
+ *
+ * @@ Desc {Update a user}
+ * @@ Get {Post it at /api/v1/admin}
+ * @@ Access {public}
+ */
+exports.updateUserRole = async (req, res) => {
+  try {
+    const { id, role } = req.body
+    const result = await updateUserRoleService(id, role)
     res.status(200).json({ status: 'success', user: result })
   } catch (error) {
     res.status(400).json({ status: 'fail', message: error.message })

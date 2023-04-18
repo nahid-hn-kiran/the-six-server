@@ -20,3 +20,8 @@ exports.getAllAdminsService = async () => {
 exports.getUserService = async (userId) => {
   return await User.findById(userId).select('-password')
 }
+
+exports.updateUserRoleService = async (userId, role) => {
+  const result = await User.updateOne({ _id: userId }, { role: role })
+  return result
+}
