@@ -13,6 +13,7 @@ const {
   getFootballArticles,
   getCricketArticles,
   getTennisArticles,
+  getBasketballArticles,
 } = require('../controllers/articles.controller')
 const { protectedContent, adminCheck } = require('../middlewares/verifyToken')
 const router = express.Router()
@@ -29,6 +30,7 @@ router.route('/featured-article').get(getFeaturedArticles)
 router.route('/football').get(getFootballArticles)
 router.route('/cricket').get(getCricketArticles)
 router.route('/tennis').get(getTennisArticles)
+router.route('/basketball').get(getBasketballArticles)
 
 router.route('/:id/comment').post(protectedContent, postComment)
 router

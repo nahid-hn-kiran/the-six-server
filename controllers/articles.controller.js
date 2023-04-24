@@ -12,6 +12,7 @@ const {
   getAllFootballArticlesService,
   getAllCricketArticlesService,
   getAllTennisArticlesService,
+  getAllBasketballArticlesService,
 } = require('../services/articles.services')
 
 /**
@@ -223,6 +224,21 @@ exports.getCricketArticles = async (req, res) => {
 exports.getTennisArticles = async (req, res) => {
   try {
     const result = await getAllTennisArticlesService()
+    res.status(200).json({ status: 'success', data: result })
+  } catch (error) {
+    res.status(401).json({ status: 'fail', message: error.message })
+  }
+}
+
+/**
+ *
+ * @@ Desc {Get all football articles}
+ * @@ Get {Get it at /api/v1/articles/tennis}
+ * @@ Access {Public}
+ */
+exports.getBasketballArticles = async (req, res) => {
+  try {
+    const result = await getAllBasketballArticlesService()
     res.status(200).json({ status: 'success', data: result })
   } catch (error) {
     res.status(401).json({ status: 'fail', message: error.message })
