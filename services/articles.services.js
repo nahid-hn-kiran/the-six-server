@@ -81,3 +81,10 @@ exports.getAllCricketArticlesService = async () => {
     .populate('author', 'name imgURL')
   return result
 }
+
+exports.getAllTennisArticlesService = async () => {
+  const result = await Article.find({ category: 'Tennis' })
+    .sort({ createdAt: -1 })
+    .populate('author', 'name imgURL')
+  return result
+}
