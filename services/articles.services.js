@@ -67,3 +67,10 @@ exports.postCommentService = async (artcleId, comment) => {
   article.comments.push(comment)
   await article.save()
 }
+
+exports.getAllFootballArticlesService = async () => {
+  const result = await Article.find({ category: 'Football' })
+    .sort({ createdAt: -1 })
+    .populate('author', 'name imgURL')
+  return result
+}

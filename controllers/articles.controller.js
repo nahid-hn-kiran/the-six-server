@@ -9,6 +9,7 @@ const {
   getTWoArticlesBottomService,
   getFeaturedArticlesService,
   postCommentService,
+  getAllFootballArticlesService,
 } = require('../services/articles.services')
 
 /**
@@ -175,6 +176,21 @@ exports.postComment = async (req, res) => {
       author: req.user._id,
     }
     const result = await postCommentService(id, theComment)
+    res.status(200).json({ status: 'success', data: result })
+  } catch (error) {
+    res.status(401).json({ status: 'fail', message: error.message })
+  }
+}
+
+/**
+ *
+ * @@ Desc {Get all football articles}
+ * @@ Get {Get it at /api/v1/articles/football}
+ * @@ Access {Public}
+ */
+exports.getFootballArticles = async (req, res) => {
+  try {
+    const result = await getAllFootballArticlesService()
     res.status(200).json({ status: 'success', data: result })
   } catch (error) {
     res.status(401).json({ status: 'fail', message: error.message })
