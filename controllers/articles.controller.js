@@ -13,7 +13,7 @@ const {
   getAllCricketArticlesService,
   getAllTennisArticlesService,
   getAllBasketballArticlesService,
-} = require('../services/articles.services')
+} = require("../services/articles.services");
 
 /**
  *
@@ -23,9 +23,9 @@ const {
  */
 exports.postArticle = async (req, res) => {
   try {
-    const { _id } = req.user
+    const { _id } = req.user;
     const { title, article, category, tags, thumbnail, thumbnailTitle } =
-      req.body
+      req.body;
     const theArticle = {
       author: _id,
       title,
@@ -34,15 +34,15 @@ exports.postArticle = async (req, res) => {
       thumbnailTitle,
       tags: tags,
       thumbnail,
-    }
-    const createdArticle = await postArticleService(theArticle)
+    };
+    const createdArticle = await postArticleService(theArticle);
     res
       .status(200)
-      .json({ status: 'success', message: 'article is created succesfully.' })
+      .json({ status: "success", message: "article is created succesfully." });
   } catch (error) {
-    res.status(401).json({ status: 'fail', message: error.message })
+    res.status(401).json({ status: "fail", message: error.message });
   }
-}
+};
 
 /**
  *
@@ -52,13 +52,15 @@ exports.postArticle = async (req, res) => {
  */
 exports.updateArticle = async (req, res) => {
   try {
-    const { id } = req.params
-    const result = await upadteArticleService(id, req.body)
-    res.status(200).json({ status: 'success', message: 'successfully updated' })
+    const { id } = req.params;
+    const result = await upadteArticleService(id, req.body);
+    res
+      .status(200)
+      .json({ status: "success", message: "successfully updated" });
   } catch (error) {
-    res.status(401).json({ status: 'fail', message: error.message })
+    res.status(401).json({ status: "fail", message: error.message });
   }
-}
+};
 
 /**
  *
@@ -68,13 +70,15 @@ exports.updateArticle = async (req, res) => {
  */
 exports.deleteArticleById = async (req, res) => {
   try {
-    const { id } = req.params
-    const result = await deleteArticleByIdService(id)
-    res.status(200).json({ status: 'success', message: 'successfully deleted' })
+    const { id } = req.params;
+    const result = await deleteArticleByIdService(id);
+    res
+      .status(200)
+      .json({ status: "success", message: "successfully deleted" });
   } catch (error) {
-    res.status(401).json({ status: 'fail', message: error.message })
+    res.status(401).json({ status: "fail", message: error.message });
   }
-}
+};
 
 /**
  *
@@ -84,12 +88,12 @@ exports.deleteArticleById = async (req, res) => {
  */
 exports.getAllArticles = async (req, res) => {
   try {
-    const result = await getAllArticlesService()
-    res.status(200).json({ status: 'success', data: result })
+    const result = await getAllArticlesService();
+    res.status(200).json({ status: "success", data: result });
   } catch (error) {
-    res.status(401).json({ status: 'fail', message: error.message })
+    res.status(401).json({ status: "fail", message: error.message });
   }
-}
+};
 
 /**
  *
@@ -99,13 +103,13 @@ exports.getAllArticles = async (req, res) => {
  */
 exports.getArticleById = async (req, res) => {
   try {
-    const { id } = req.params
-    const result = await getArticleByIdService(id)
-    res.status(200).json({ status: 'success', data: result })
+    const { id } = req.params;
+    const result = await getArticleByIdService(id);
+    res.status(200).json({ status: "success", data: result });
   } catch (error) {
-    res.status(401).json({ status: 'fail', message: error.message })
+    res.status(401).json({ status: "fail", message: error.message });
   }
-}
+};
 
 /**
  *
@@ -115,12 +119,12 @@ exports.getArticleById = async (req, res) => {
  */
 exports.getFirstTwoArticle = async (req, res) => {
   try {
-    const result = await getFirstTwoArticleService()
-    res.status(200).json({ status: 'success', data: result })
+    const result = await getFirstTwoArticleService();
+    res.status(200).json({ status: "success", data: result });
   } catch (error) {
-    res.status(401).json({ status: 'fail', message: error.message })
+    res.status(401).json({ status: "fail", message: error.message });
   }
-}
+};
 
 /**
  *
@@ -130,12 +134,12 @@ exports.getFirstTwoArticle = async (req, res) => {
  */
 exports.getEightArticles = async (req, res) => {
   try {
-    const result = await getEightArticlesService()
-    res.status(200).json({ status: 'success', data: result })
+    const result = await getEightArticlesService();
+    res.status(200).json({ status: "success", data: result });
   } catch (error) {
-    res.status(401).json({ status: 'fail', message: error.message })
+    res.status(401).json({ status: "fail", message: error.message });
   }
-}
+};
 /**
  *
  * @@ Desc {Get FIrst two article}
@@ -144,12 +148,12 @@ exports.getEightArticles = async (req, res) => {
  */
 exports.getTWoArticlesBottom = async (req, res) => {
   try {
-    const result = await getTWoArticlesBottomService()
-    res.status(200).json({ status: 'success', data: result })
+    const result = await getTWoArticlesBottomService();
+    res.status(200).json({ status: "success", data: result });
   } catch (error) {
-    res.status(401).json({ status: 'fail', message: error.message })
+    res.status(401).json({ status: "fail", message: error.message });
   }
-}
+};
 /**
  *
  * @@ Desc {Get Featured articles for slider}
@@ -158,12 +162,12 @@ exports.getTWoArticlesBottom = async (req, res) => {
  */
 exports.getFeaturedArticles = async (req, res) => {
   try {
-    const result = await getFeaturedArticlesService()
-    res.status(200).json({ status: 'success', data: result })
+    const result = await getFeaturedArticlesService();
+    res.status(200).json({ status: "success", data: result });
   } catch (error) {
-    res.status(401).json({ status: 'fail', message: error.message })
+    res.status(401).json({ status: "fail", message: error.message });
   }
-}
+};
 /**
  *
  * @@ Desc {POST Comment for a article}
@@ -172,18 +176,18 @@ exports.getFeaturedArticles = async (req, res) => {
  */
 exports.postComment = async (req, res) => {
   try {
-    const { id } = req.params
-    const comment = req.body
+    const { id } = req.params;
+    const comment = req.body;
     const theComment = {
       comment: comment.comment,
       author: req.user._id,
-    }
-    const result = await postCommentService(id, theComment)
-    res.status(200).json({ status: 'success', data: result })
+    };
+    const result = await postCommentService(id, theComment);
+    res.status(200).json({ status: "success", data: result });
   } catch (error) {
-    res.status(401).json({ status: 'fail', message: error.message })
+    res.status(401).json({ status: "fail", message: error.message });
   }
-}
+};
 
 /**
  *
@@ -193,12 +197,12 @@ exports.postComment = async (req, res) => {
  */
 exports.getFootballArticles = async (req, res) => {
   try {
-    const result = await getAllFootballArticlesService()
-    res.status(200).json({ status: 'success', data: result })
+    const result = await getAllFootballArticlesService();
+    res.status(200).json({ status: "success", data: result });
   } catch (error) {
-    res.status(401).json({ status: 'fail', message: error.message })
+    res.status(401).json({ status: "fail", message: error.message });
   }
-}
+};
 
 /**
  *
@@ -208,12 +212,12 @@ exports.getFootballArticles = async (req, res) => {
  */
 exports.getCricketArticles = async (req, res) => {
   try {
-    const result = await getAllCricketArticlesService()
-    res.status(200).json({ status: 'success', data: result })
+    const result = await getAllCricketArticlesService();
+    res.status(200).json({ status: "success", data: result });
   } catch (error) {
-    res.status(401).json({ status: 'fail', message: error.message })
+    res.status(401).json({ status: "fail", message: error.message });
   }
-}
+};
 
 /**
  *
@@ -223,12 +227,12 @@ exports.getCricketArticles = async (req, res) => {
  */
 exports.getTennisArticles = async (req, res) => {
   try {
-    const result = await getAllTennisArticlesService()
-    res.status(200).json({ status: 'success', data: result })
+    const result = await getAllTennisArticlesService();
+    res.status(200).json({ status: "success", data: result });
   } catch (error) {
-    res.status(401).json({ status: 'fail', message: error.message })
+    res.status(401).json({ status: "fail", message: error.message });
   }
-}
+};
 
 /**
  *
@@ -238,9 +242,9 @@ exports.getTennisArticles = async (req, res) => {
  */
 exports.getBasketballArticles = async (req, res) => {
   try {
-    const result = await getAllBasketballArticlesService()
-    res.status(200).json({ status: 'success', data: result })
+    const result = await getAllBasketballArticlesService();
+    res.status(200).json({ status: "success", data: result });
   } catch (error) {
-    res.status(401).json({ status: 'fail', message: error.message })
+    res.status(401).json({ status: "fail", message: error.message });
   }
-}
+};
