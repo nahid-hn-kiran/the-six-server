@@ -12,6 +12,9 @@ dotenv.config({
 connectDB();
 
 const port = process.env.PORT || 5000;
-app.listen(port, () => {
-  console.log(`Express is running from port: ${port}`);
-});
+
+if (process.env.NODE_ENV !== "production") {
+  app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
+  });
+}
